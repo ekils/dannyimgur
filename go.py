@@ -23,13 +23,15 @@ class imgur:
         url= input('Paste imgur url: ')
         hash = re.compile('hash\":\"[a-zA-Z0-9]{0,10}')
         try:
-            page =(url).  # example: https://imgur.com/a/J9ZWQ
+            page =(url)  # example: https://imgur.com/a/J9ZWQ
             driver =self.driver
             driver.get(page)
             soups = BeautifulSoup(driver.page_source, "html.parser")
             # print(type(soups))
-            hash_key = hash.findall(str(soups))
-            hash_key_url = ['http://i.imgur.com/'+ i.split('hash":"')[1]+'.jpg' for i in hash_key]
+            hash_key_temp = hash.findall(str(soups))
+            hash_key= list(set(hash_key_temp))
+            hash_key_url_temp = ['http://i.imgur.com/'+ i.split('hash":"')[1]+'.jpg' for i in hash_key]
+            hash_key_url= list(set(hash_key_url_temp))
 
             print(hash_key_url)
 
