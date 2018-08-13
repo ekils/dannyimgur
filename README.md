@@ -7,3 +7,6 @@ v1.0:
 
 v1.1:
 * set photo_list  for real size photo. 
+
+** 
+More features to be imported.
